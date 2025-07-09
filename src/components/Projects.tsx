@@ -17,7 +17,7 @@ interface Project {
   image?: string;
 }
 
-// サンプルプロジェクトデータ（将来的にSanityから取得）
+// サンプルプロジェクトデータ（Sanityデータがない場合のフォールバック）
 const sampleProjects: Project[] = [
   {
     id: "1",
