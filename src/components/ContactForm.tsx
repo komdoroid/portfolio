@@ -41,24 +41,31 @@ export function ContactForm() {
     setIsSubmitting(true);
     
     try {
-      // TODO: Sanity API連携実装予定
-      // const response = await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(data)
-      // });
-      
-      // 仮の成功レスポンス（実装時に削除）
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || '送信に失敗しました');
+      }
       
       setIsSubmitted(true);
       form.reset();
       
       // 3秒後に成功メッセージを非表示
       setTimeout(() => setIsSubmitted(false), 3000);
+      
     } catch (error) {
       console.error('送信エラー:', error);
-      // TODO: エラーハンドリング実装
+      
+      // エラーメッセージの表示（今後トーストやモーダルで表示）
+      const errorMessage = error instanceof Error ? error.message : '送信中にエラーが発生しました';
+      alert(errorMessage); // 一時的にalertで表示
+      
     } finally {
       setIsSubmitting(false);
     }
