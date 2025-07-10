@@ -154,20 +154,6 @@ export function Header() {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* ロゴ */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Link 
-              href="/"
-              className="text-xl font-bold text-[#64ffda] hover:text-[#64ffda]/80 transition-colors duration-300"
-            >
-              Portfolio
-            </Link>
-          </motion.div>
-
           {/* デスクトップナビゲーション */}
           <motion.nav
             ref={navRef}
