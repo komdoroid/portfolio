@@ -87,7 +87,7 @@ export function Projects() {
             className="text-center space-y-4"
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
-              <span className="text-primary font-mono text-lg block mb-2">03.</span>
+              <span className="text-primary font-mono text-lg block mb-2">04.</span>
               プロジェクト
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">

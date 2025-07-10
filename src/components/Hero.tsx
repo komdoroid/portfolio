@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Mail } from "lucide-react";
+import Link from "next/link";
 
 export function Hero() {
   const scrollToSection = (sectionId: string) => {
@@ -11,7 +12,7 @@ export function Hero() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <section id="hero" className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -67,20 +68,22 @@ export function Hero() {
             transition={{ delay: 1.0, duration: 0.8 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8"
           >
-            <Button
-              onClick={() => scrollToSection("projects")}
-              className="bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 px-8 py-6 text-lg font-medium"
-              variant="outline"
-            >
-              プロジェクトを見る
-            </Button>
+            <Link href="/projects">
+              <Button
+                className="bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 px-8 py-6 text-lg font-medium"
+                variant="outline"
+              >
+                プロジェクトを見る
+              </Button>
+            </Link>
             
-            <Button
-              onClick={() => scrollToSection("contact")}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 px-8 py-6 text-lg font-medium"
-            >
-              お問い合わせ
-            </Button>
+            <Link href="/contact">
+              <Button
+                className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 px-8 py-6 text-lg font-medium"
+              >
+                お問い合わせ
+              </Button>
+            </Link>
           </motion.div>
 
           {/* ソーシャルリンク */}
