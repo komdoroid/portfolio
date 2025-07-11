@@ -1,8 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, ArrowRight } from "lucide-react";
@@ -99,9 +97,6 @@ const sampleFeaturedProjects: ProjectDocument[] = [
 ];
 
 export function FeaturedProjects() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  
   const [projects, setProjects] = useState<ProjectDocument[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -130,29 +125,6 @@ export function FeaturedProjects() {
     fetchFeaturedProjects();
   }, []);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: [0.25, 0.46, 0.45, 0.94] as const
-      }
-    }
-  };
-
   if (loading) {
     return (
       <section className="py-20 px-4 sm:px-6 lg:px-8">
@@ -175,18 +147,9 @@ export function FeaturedProjects() {
   return (
     <section id="featured-projects" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={containerVariants}
-          className="space-y-12"
-        >
+        <div className="space-y-12">
           {/* セクションヘッダー */}
-          <motion.div
-            variants={itemVariants}
-            className="text-center space-y-4"
-          >
+          <div className="text-center space-y-4">
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
               <span className="text-primary font-mono text-lg block mb-2">03.</span>
               注目プロジェクト
@@ -199,16 +162,12 @@ export function FeaturedProjects() {
                 ⚠️ {error} - サンプルデータを表示しています
               </p>
             )}
-          </motion.div>
+          </div>
 
           {/* プロジェクトグリッド */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.slice(0, 3).map((project) => (
-              <motion.div
-                key={project._id}
-                variants={itemVariants}
-                className="group"
-              >
+              <div key={project._id} className="group">
                 <Card className="h-full bg-card/60 border-border hover:border-primary/20 transition-all duration-300 hover:shadow-lg">
                   <CardHeader className="p-0">
                     <ProjectImage image={project.image} title={project.title} />
@@ -286,15 +245,12 @@ export function FeaturedProjects() {
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             ))}
           </div>
 
           {/* すべてのプロジェクトを見るリンク */}
-          <motion.div
-            variants={itemVariants}
-            className="text-center pt-8"
-          >
+          <div className="text-center pt-8">
             <Button
               variant="outline"
               className="border-border hover:border-primary/50"
@@ -308,8 +264,8 @@ export function FeaturedProjects() {
                 <ArrowRight size={16} />
               </Link>
             </Button>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

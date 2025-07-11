@@ -1,8 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
@@ -98,9 +96,6 @@ const sampleProjects: ProjectDocument[] = [
 ];
 
 export function Projects() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  
   const [projects, setProjects] = useState<ProjectDocument[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -161,29 +156,6 @@ export function Projects() {
     fetchProjects();
   }, []);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, x: -50 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94] as const
-      }
-    }
-  };
-
   if (loading) {
     return (
       <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-card/20">
@@ -206,18 +178,9 @@ export function Projects() {
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-card/20">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          variants={containerVariants}
-          className="space-y-12"
-        >
+        <div className="space-y-12">
           {/* セクションヘッダー */}
-          <motion.div
-            variants={itemVariants}
-            className="text-center space-y-4"
-          >
+          <div className="text-center space-y-4">
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
               <span className="text-primary font-mono text-lg block mb-2">05.</span>
               プロジェクト
@@ -231,14 +194,13 @@ export function Projects() {
                 ⚠️ {error} - サンプルデータを表示しています
               </p>
             )}
-          </motion.div>
+          </div>
 
           {/* プロジェクト一覧 */}
           <div className="space-y-8">
             {projects.map((project, index) => (
-              <motion.div
+              <div
                 key={project._id}
-                variants={itemVariants}
                 className={`flex flex-col lg:flex-row gap-8 items-center ${
                   index % 2 === 1 ? 'lg:flex-row-reverse' : ''
                 }`}
@@ -329,15 +291,12 @@ export function Projects() {
                     </CardContent>
                   </Card>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
           {/* GitHub リンク */}
-          <motion.div
-            variants={itemVariants}
-            className="text-center pt-8"
-          >
+          <div className="text-center pt-8">
             <Button
               variant="outline"
               className="border-border hover:border-primary/50"
@@ -353,8 +312,8 @@ export function Projects() {
                 その他のプロジェクトを見る
               </a>
             </Button>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );
