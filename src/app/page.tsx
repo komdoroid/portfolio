@@ -1,5 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { Skills } from "@/components/Skills";
+import { FeaturedProjects } from "@/components/FeaturedProjects";
 import { About } from "@/components/About";
 import { Footer } from "@/components/Footer";
 
@@ -11,6 +12,9 @@ export default function Home() {
       
       {/* スキル セクション */}
       <Skills />
+      
+      {/* 注目プロジェクト セクション */}
+      <FeaturedProjects />
       
       {/* 自己紹介 セクション */}
       <About />

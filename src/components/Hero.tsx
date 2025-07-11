@@ -37,7 +37,7 @@ export function Hero() {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-4xl sm:text-6xl lg:text-7xl font-bold text-foreground"
           >
-            Your Name
+            Kazuki Komuratani
           </motion.h1>
 
           {/* サブタイトル */}

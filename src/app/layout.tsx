@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
@@ -18,7 +18,11 @@ export const metadata: Metadata = {
   description: "フロントエンド・バックエンド開発を得意とするフルスタック開発者のポートフォリオサイト。React、Next.js、TypeScript、Node.jsを使用したWebアプリケーション開発の実績をご紹介します。",
   keywords: ["フルスタック開発者", "React", "Next.js", "TypeScript", "Node.js", "ポートフォリオ"],
   authors: [{ name: "Your Name" }],
-  viewport: "width=device-width, initial-scale=1",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
