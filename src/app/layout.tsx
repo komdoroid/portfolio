@@ -105,9 +105,7 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
   },
   
-  // 🎨 テーマカラー
-  themeColor: "#64ffda",
-  colorScheme: "dark",
+  
 };
 
 export const viewport: Viewport = {

@@ -25,10 +25,27 @@ export function Header() {
   const [activeSection, setActiveSection] = useState("hero");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [underlineStyle, setUnderlineStyle] = useState({ width: 0, left: 0 });
+  const [pendingScrollTarget, setPendingScrollTarget] = useState<string | null>(null);
   const navRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
   const router = useRouter();
   const controls = useAnimation();
+
+  // ページ遷移後のスクロール処理
+  useEffect(() => {
+    if (pathname === "/" && pendingScrollTarget) {
+      // ページが完全に読み込まれるまで待つ
+      const timer = setTimeout(() => {
+        const element = document.getElementById(pendingScrollTarget);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+        setPendingScrollTarget(null);
+      }, 500);
+
+      return () => clearTimeout(timer);
+    }
+  }, [pathname, pendingScrollTarget]);
 
   // スクロール位置に基づいてアクティブセクションを検出
   useEffect(() => {
@@ -105,31 +122,25 @@ export function Header() {
   const handleNavClick = (item: NavItem) => {
     setIsMenuOpen(false);
     
-    // クリック時に即座にactiveSectionを更新
-    setActiveSection(item.id);
-    
     if (item.href) {
-      // 外部ページへのリンク
+      // 外部ページへのリンク（Projects、Contact）
       router.push(item.href);
+      setActiveSection(item.id);
     } else {
-      // Home、Skills、Aboutの場合
+      // Home、Skills、Works、Aboutの場合
       if (pathname === "/") {
         // 既にホームページにいる場合はスクロール
-        scrollToSection(item.id);
+        setTimeout(() => {
+          scrollToSection(item.id);
+        }, 300);
+        setActiveSection(item.id);
       } else {
         // 別ページにいる場合はホームページに移動してからスクロール
+        setActiveSection(item.id);
+        setPendingScrollTarget(item.id);
         router.push("/");
-        // ページ遷移後にスクロール
-        setTimeout(() => {
-          const element = document.getElementById(item.id);
-          if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-          }
-        }, 100);
       }
     }
-    
-    // アンダーラインの更新はuseEffectに任せる
   };
 
   // ヘッダーのスクロール時の背景変化
