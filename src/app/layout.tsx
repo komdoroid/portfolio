@@ -139,7 +139,7 @@ export default function RootLayout({
               url: "https://yoursite.com",
               image: "https://yoursite.com/profile-image.jpg",
               sameAs: [
-                "https://github.com/yourusername",
+                "https://github.com/komdoroid",
                 "https://linkedin.com/in/yourusername",
                 "https://twitter.com/yourusername",
               ],

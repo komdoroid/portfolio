@@ -133,7 +133,7 @@ export function ContactForm() {
                     <Mail className="text-primary" size={20} />
                     <div>
                       <p className="font-medium text-foreground">メール</p>
-                      <p className="text-muted-foreground">your.email@example.com</p>
+                      <p className="text-muted-foreground">kom.commoc@gmail.com</p>
                     </div>
                   </div>
                   

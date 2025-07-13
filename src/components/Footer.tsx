@@ -51,7 +51,7 @@ export function Footer() {
             <h4 className="text-lg font-semibold text-foreground">リンク</h4>
             <div className="flex flex-col space-y-3">
               <a
-                href="https://github.com"
+                href="https://github.com/komdoroid"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-300 text-sm group"
@@ -62,7 +62,7 @@ export function Footer() {
               </a>
               
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:kom.commoc@gmail.com"
                 className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-300 text-sm group"
               >
                 <Mail size={16} />

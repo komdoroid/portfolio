@@ -153,10 +153,6 @@ export function About() {
                   <div className="space-y-3 text-muted-foreground">
                     <div className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span>オープンソースプロジェクトへの貢献</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 bg-primary rounded-full"></div>
                       <span>技術ブログの執筆（週1回更新）</span>
                     </div>
                     <div className="flex items-center gap-3">

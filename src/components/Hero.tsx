@@ -94,7 +94,7 @@ export function Hero() {
             className="flex justify-center gap-6 pt-8"
           >
             <a
-              href="https://github.com"
+              href="https://github.com/komdoroid"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors duration-300"
@@ -102,7 +102,7 @@ export function Hero() {
               <Github size={24} />
             </a>
             <a
-              href="mailto:your.email@example.com"
+              href="mailto:kom.commoc@gmail.com"
               className="text-muted-foreground hover:text-primary transition-colors duration-300"
             >
               <Mail size={24} />
