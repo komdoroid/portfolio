@@ -1,9 +1,8 @@
 "use client";
 
 import { motion, useAnimation } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { Menu, X } from "lucide-react";
-import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
 interface NavItem {
@@ -89,25 +88,28 @@ export function Header() {
     }
   }, [pathname]);
 
-  // アンダーラインの位置とサイズを計算
-  const updateUnderlinePosition = () => {
-    if (!navRef.current) return;
+  // アンダーラインの位置を更新する関数
+  const updateUnderlinePosition = useCallback(() => {
+    const navElement = navRef.current;
+    if (!navElement) return;
 
-    const activeNavItem = navRef.current.querySelector(`[data-nav="${activeSection}"]`) as HTMLElement;
-    if (activeNavItem) {
-      const navRect = navRef.current.getBoundingClientRect();
-      const activeRect = activeNavItem.getBoundingClientRect();
-      
+    const activeElement = navElement.querySelector(`[data-section="${activeSection}"]`) as HTMLElement;
+    if (!activeElement) return;
+
+    const navRect = navElement.getBoundingClientRect();
+    const activeRect = activeElement.getBoundingClientRect();
+    
+    if (activeRect.width > 0) {
       setUnderlineStyle({
         width: activeRect.width,
         left: activeRect.left - navRect.left
       });
     }
-  };
+  }, [activeSection]);
 
   useEffect(() => {
     updateUnderlinePosition();
-  }, [activeSection, isMenuOpen]);
+  }, [activeSection, isMenuOpen, updateUnderlinePosition]);
 
   // セクションへのスムーススクロール
   const scrollToSection = (sectionId: string) => {
@@ -183,7 +185,7 @@ export function Header() {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
-                  data-nav={item.id}
+                  data-section={item.id}
                   className="relative"
                 >
                   <button

@@ -41,9 +41,18 @@ export function urlFor(source: SanityImageSource) {
   return builder.image(source);
 }
 
+// 画像の型定義
+type SanityImage = {
+  asset: {
+    _ref: string;
+    _type: 'reference';
+  };
+  alt?: string;
+};
+
 // 画像最適化ヘルパー関数
 export const optimizeImage = (
-  image: any, 
+  image: SanityImage | null | undefined, 
   context: 'thumbnail' | 'card' | 'hero' | 'gallery' = 'card'
 ) => {
   if (!image || !builder) return null;
@@ -68,7 +77,7 @@ export const optimizeImage = (
 };
 
 // レスポンシブ画像URL生成
-export const generateResponsiveUrls = (image: any) => {
+export const generateResponsiveUrls = (image: SanityImage | null | undefined) => {
   if (!image || !builder) return null;
   
   const urlBuilder = urlFor(image);

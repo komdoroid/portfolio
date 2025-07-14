@@ -6,8 +6,17 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
 import { getProjects, ProjectDocument, generateResponsiveUrls, optimizeImage } from "@/lib/sanity";
 
+// 画像の型定義
+type SanityImage = {
+  asset: {
+    _ref: string;
+    _type: 'reference';
+  };
+  alt?: string;
+};
+
 // プロジェクト画像コンポーネント
-const ProjectImage = ({ image, title }: { image: any, title: string }) => {
+const ProjectImage = ({ image, title }: { image: SanityImage | null | undefined, title: string }) => {
   if (!image) {
     return (
       <div className="aspect-video bg-secondary/20 rounded-lg border border-border flex items-center justify-center">
