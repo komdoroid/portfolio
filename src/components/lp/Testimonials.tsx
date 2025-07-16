@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { carouselVariants, carouselTransition, fadeInUp } from '@/lib/motionVariants';
 
@@ -77,6 +77,7 @@ const StarRating = ({ rating }: { rating: number }) => {
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   const slideNext = () => {
     setDirection(1);
@@ -85,17 +86,45 @@ export default function Testimonials() {
     );
   };
 
+  const slideNextManual = () => {
+    slideNext();
+    // 手動操作時は一時的に自動再生を停止
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 5000); // 5秒後に再開
+  };
+
   const slidePrev = () => {
     setDirection(-1);
     setCurrentIndex((prevIndex) => 
       prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
     );
+    // 手動操作時は一時的に自動再生を停止
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 5000); // 5秒後に再開
   };
 
   const goToSlide = (index: number) => {
     setDirection(index > currentIndex ? 1 : -1);
     setCurrentIndex(index);
+    // 手動操作時は一時的に自動再生を停止
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 5000); // 5秒後に再開
   };
+
+  // 自動切り替え機能
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      slideNext();
+    }, 3000); // 3秒ごとに切り替え
+
+    return () => clearInterval(interval);
+  }, [currentIndex, isAutoPlaying]);
+
+  // マウスホバー時に自動再生を停止
+  const handleMouseEnter = () => setIsAutoPlaying(false);
+  const handleMouseLeave = () => setIsAutoPlaying(true);
 
   return (
     <section className="py-20 bg-gradient-to-br from-blue-50 to-emerald-50">
@@ -116,7 +145,11 @@ export default function Testimonials() {
 
         {/* カルーセル */}
         <div className="max-w-4xl mx-auto">
-          <div className="relative bg-white rounded-3xl shadow-lg overflow-hidden">
+          <div 
+            className="relative bg-white rounded-3xl shadow-lg overflow-hidden"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={currentIndex}
@@ -190,7 +223,7 @@ export default function Testimonials() {
             </button>
             
             <button
-              onClick={slideNext}
+              onClick={slideNextManual}
               className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-blue-600 transition-colors duration-300"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
