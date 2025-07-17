@@ -72,20 +72,19 @@ export function About() {
                   
                   <div className="space-y-4 text-muted-foreground leading-relaxed">
                     <p>
-                      大学でコンピュータサイエンスを学び、Web開発の世界に魅力を感じて
-                      フロントエンド開発からキャリアをスタートしました。現在はフルスタック開発者として、
-                      ユーザー体験とパフォーマンスを重視したアプリケーション開発に従事しています。
+                      大学では機械工学を学び、研究室でプログラミングに触れました。それをきっかけにWeb開発の世界に魅力を感じ、
+                      システムエンジニアとしてキャリアをスタートしました。現在、業務では主にPythonを使用して
+                      ユーザー体験とパフォーマンスを重視したアプリケーション開発に取り組んでいます。
                     </p>
                     
                     <p>
-                      特にReactエコシステムとTypeScriptによる型安全な開発を得意とし、
-                      モダンなWebフレームワークを活用したスケーラブルなアプリケーション構築に
-                      取り組んでいます。
+                      個人開発としてReactエコシステムとTypeScriptによる型安全な開発に挑戦しています。
+                      モダンなWebフレームワークを活用したスケーラブルなアプリケーション構築に取り組んでいます。
                     </p>
 
                     <p>
                       常に新しい技術の学習を心がけ、業界のトレンドをキャッチアップしながら、
-                      チーム開発における品質向上とプロセス改善にも積極的に貢献しています。
+                      自分の技術を磨き、より良いソリューションを提供することを目指しています。
                     </p>
                   </div>
                 </CardContent>
@@ -153,7 +152,7 @@ export function About() {
                   <div className="space-y-3 text-muted-foreground">
                     <div className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span>技術ブログの執筆（週1回更新）</span>
+                      <span>技術ブログの執筆（週1回程度更新）</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="w-2 h-2 bg-primary rounded-full"></div>

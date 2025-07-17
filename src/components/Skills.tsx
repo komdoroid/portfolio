@@ -31,6 +31,7 @@ const skillCategories: SkillCategory[] = [
     skills: [
       "Node.js",
       "Express.js",
+      "Python",
       "Prisma",
       "PostgreSQL",
       "MongoDB",
@@ -46,7 +47,7 @@ const skillCategories: SkillCategory[] = [
       "Firebase",
       "GitHub Actions",
       "Docker",
-      "AWS",
+      // "AWS",
       "Git",
       "CI/CD"
     ]

@@ -57,7 +57,7 @@ export function Hero() {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
           >
-            React、Next.js、TypeScriptを中心としたモダンなWeb開発を得意とし、
+            React、Next.js、TypeScriptを中心としたモダンなWeb開発。
             ユーザー体験を重視したアプリケーション構築に取り組んでいます。
           </motion.p>
 
