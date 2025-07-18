@@ -164,7 +164,7 @@ export function FeaturedProjects() {
               注目プロジェクト
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              これまでに開発したプロジェクトの中から、特に力を入れて取り組んだものをご紹介します。
+              これまでに開発したプロジェクトの中から、一部をご紹介します。
             </p>
             {error && (
               <p className="text-yellow-600 text-sm">

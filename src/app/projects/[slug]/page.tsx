@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import OnlineCounselingLP from '@/components/projects/OnlineCounselingLP';
 import DiaryAppLP from '@/components/projects/DiaryAppLP';
 import InvoiceSaasLP from '@/components/projects/InvoiceSaasLP';
+import CodingSchoolLP from '@/components/projects/CodingSchoolLP';
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -72,6 +73,29 @@ const projects = {
         card: 'summary_large_image' as const,
         title: '請求書管理SaaS | 請求業務をもっとスマートに',
         description: 'AI搭載の請求書管理システムで、煩雑な経理業務を自動化し、ビジネスの成長に集中できる環境を実現。',
+      },
+      robots: {
+        index: true,
+        follow: true,
+      }
+    }
+  },
+  'lp-coding-school': {
+    component: CodingSchoolLP,
+    metadata: {
+      title: 'Node.js + TypeScript コーディングスクール | ゼロから始めるエンジニアへの道',
+      description: '未経験から半年で現場レベルへ。Node.js・TypeScript特化型オンラインスクールで、現役エンジニアによる1on1メンタリングと実務形式のハンズオン課題で確実にスキルアップ。',
+      keywords: ['Node.js', 'TypeScript', 'プログラミングスクール', 'オンライン学習', 'バックエンド', 'エンジニア転職', '未経験者歓迎', 'メンタリング'],
+      openGraph: {
+        title: 'Node.js + TypeScript コーディングスクール | ゼロから始めるエンジニアへの道',
+        description: '未経験から半年で現場レベルへ。Node.js・TypeScript特化型オンラインスクールで確実にスキルアップ。',
+        type: 'website' as const,
+        locale: 'ja_JP',
+      },
+      twitter: {
+        card: 'summary_large_image' as const,
+        title: 'Node.js + TypeScript コーディングスクール | ゼロから始めるエンジニアへの道',
+        description: '未経験から半年で現場レベルへ。Node.js・TypeScript特化型オンラインスクールで確実にスキルアップ。',
       },
       robots: {
         index: true,
