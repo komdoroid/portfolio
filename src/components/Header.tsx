@@ -62,7 +62,7 @@ export function Header() {
     if (pathname === "/") {
       const observerOptions = {
         root: null,
-        rootMargin: "-20% 0px -80% 0px",
+        rootMargin: "-20% 0px -50% 0px",
         threshold: 0.1
       };
 
@@ -109,6 +109,8 @@ export function Header() {
 
   useEffect(() => {
     updateUnderlinePosition();
+    window.addEventListener("resize", updateUnderlinePosition);
+    return () => window.removeEventListener("resize", updateUnderlinePosition);
   }, [activeSection, isMenuOpen, updateUnderlinePosition]);
 
   // セクションへのスムーススクロール
